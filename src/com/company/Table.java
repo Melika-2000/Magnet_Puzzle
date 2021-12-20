@@ -3,7 +3,7 @@ public class Table {
     int RowNums;
     int ColNums;
 
-    Piece[][] tableMap = new Piece[RowNums][ColNums];
+    private Piece[][] tableMap = new Piece[RowNums][ColNums];
 
     public Table(int rowNums, int colNums, int[][] intTable) {
         this.RowNums = rowNums;
@@ -31,6 +31,21 @@ public class Table {
                 }
             }
         }
+    }
 
+    public int getRowNums() {
+        return RowNums;
+    }
+
+    public int getColNums() {
+        return ColNums;
+    }
+
+    public Piece[][] getTableMap() {
+        return tableMap;
+    }
+
+    public void setTableMap(Piece[][] tableMap) {
+        this.tableMap = tableMap;
     }
 }
