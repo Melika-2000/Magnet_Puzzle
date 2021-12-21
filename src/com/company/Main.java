@@ -37,7 +37,27 @@ public class Main {
                 intTable[i][j] = scanner.nextInt();
             }
         }
+        Variable[] variables = new Variable[(rowNumber * columnNumber) / 2];
+        for(int i = 0, varIndex = 0; i < rowNumber; i++){
+            for(int j = 0; j < columnNumber; j++){
+                if(i > 0 && intTable[i - 1][j] == intTable[i][j]){
+                    variables[varIndex] = new Variable(i - 1, j, i, j);
+                    varIndex++;
+                }
+                if(i < rowNumber - 1 && intTable[i + 1][j] == intTable[i][j]){
+                    variables[varIndex] = new Variable(i + 1, j, i, j);
+                    varIndex++;
+                }
+                if(j > 0 && intTable[i][j - 1] == intTable[i][j]){
+                    variables[varIndex] = new Variable(i, j - 1, i, j);
+                    varIndex++;
+                }
+                if(j < columnNumber - 1 && intTable[i][j + 1] == intTable[i][j]){
+                    variables[varIndex] = new Variable(i, j + 1, i, j);
+                    varIndex++;
+                }
+            }
+        }
 
-        Table table = new Table(rowNumber,columnNumber,intTable);
     }
 }
