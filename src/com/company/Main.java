@@ -1,6 +1,6 @@
 package com.company;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -37,27 +37,33 @@ public class Main {
                 intTable[i][j] = scanner.nextInt();
             }
         }
-        Variable[] variables = new Variable[(rowNumber * columnNumber) / 2];
-        for(int i = 0, varIndex = 0; i < rowNumber; i++){
+
+        ArrayList<Integer> position = new ArrayList<>();
+        Hashtable<ArrayList<Integer>, Variable> variables = new Hashtable<>();
+
+        for(int i = 0; i < rowNumber; i++){
             for(int j = 0; j < columnNumber; j++){
-                if(i > 0 && intTable[i - 1][j] == intTable[i][j]){
-                    variables[varIndex] = new Variable(i - 1, j, i, j);
-                    varIndex++;
-                }
                 if(i < rowNumber - 1 && intTable[i + 1][j] == intTable[i][j]){
-                    variables[varIndex] = new Variable(i + 1, j, i, j);
-                    varIndex++;
-                }
-                if(j > 0 && intTable[i][j - 1] == intTable[i][j]){
-                    variables[varIndex] = new Variable(i, j - 1, i, j);
-                    varIndex++;
+                    position.add(i);
+                    position.add(j);
+                    variables.put(position, new Variable(i + 1, j, i, j));
+                    position = new ArrayList<>();
+                    position.add(i + 1);
+                    position.add(j);
+                    variables.put(position, new Variable(i + 1, j, i, j));
+                    position = new ArrayList<>();
                 }
                 if(j < columnNumber - 1 && intTable[i][j + 1] == intTable[i][j]){
-                    variables[varIndex] = new Variable(i, j + 1, i, j);
-                    varIndex++;
+                    position.add(i);
+                    position.add(j);
+                    variables.put(position, new Variable(i, j + 1, i, j));
+                    position = new ArrayList<>();
+                    position.add(i);
+                    position.add(j + 1);
+                    variables.put(position, new Variable(i, j + 1, i, j));
+                    position = new ArrayList<>();
                 }
             }
         }
-
     }
 }
