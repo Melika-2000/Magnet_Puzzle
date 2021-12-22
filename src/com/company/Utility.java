@@ -20,4 +20,12 @@ public class Utility {
         int[][] varPosition = selectedVar.getPositions();
         ArrayList<Integer> position = new ArrayList<>();
     }
+
+    public void MRV(ArrayList<Variable> variables){
+
+    }
+
+    public void LCV(ArrayList<Variable> variables){
+
+    }
 }

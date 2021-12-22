@@ -53,7 +53,7 @@ public class Variable {
         if(position.get(0) == this.positions[0][0] && position.get(1) == this.positions[0][1]){
             returnedArray.add(this.positions[1][0]);
             returnedArray.add(this.positions[1][1]);
-        }else if(position.get(0) == this.positions[0][0] && position.get(1) == this.positions[1][1]){
+        }else if(position.get(0) == this.positions[1][0] && position.get(1) == this.positions[1][1]){
             returnedArray.add(this.positions[0][0]);
             returnedArray.add(this.positions[0][1]);
         }

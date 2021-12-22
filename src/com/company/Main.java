@@ -38,32 +38,28 @@ public class Main {
             }
         }
 
-        ArrayList<Integer> position = new ArrayList<>();
-        Hashtable<ArrayList<Integer>, Variable> variables = new Hashtable<>();
+        Hashtable<String, Variable> variables = new Hashtable<>();
+        String key;
 
         for(int i = 0; i < rowNumber; i++){
             for(int j = 0; j < columnNumber; j++){
                 if(i < rowNumber - 1 && intTable[i + 1][j] == intTable[i][j]){
-                    position.add(i);
-                    position.add(j);
-                    variables.put(position, new Variable(i + 1, j, i, j));
-                    position = new ArrayList<>();
-                    position.add(i + 1);
-                    position.add(j);
-                    variables.put(position, new Variable(i + 1, j, i, j));
-                    position = new ArrayList<>();
+                    Variable var =  new Variable(i + 1, j, i, j);
+                    ArrayList arr = new ArrayList();
+                    key = i + "" + j;
+                    variables.put(key, var);
+                    key = (i+1) + "" + j;
+                    variables.put(key, var);
                 }
                 if(j < columnNumber - 1 && intTable[i][j + 1] == intTable[i][j]){
-                    position.add(i);
-                    position.add(j);
-                    variables.put(position, new Variable(i, j + 1, i, j));
-                    position = new ArrayList<>();
-                    position.add(i);
-                    position.add(j + 1);
-                    variables.put(position, new Variable(i, j + 1, i, j));
-                    position = new ArrayList<>();
+                    Variable var =  new Variable(i, j+1, i, j);
+                    key = i + "" + j;
+                    variables.put(key, var);
+                    key = i + "" + (j+1);
+                    variables.put(key, var);
                 }
             }
         }
+
     }
 }
