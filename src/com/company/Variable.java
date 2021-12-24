@@ -1,8 +1,7 @@
 package com.company;
-
 import java.util.ArrayList;
 
-public class Variable {
+public class Variable{
     private int[][] positions = new int[2][2];
     private boolean isMagnet;
     private char[] positionPoles = new char[2];
@@ -12,10 +11,10 @@ public class Variable {
     //// if domain[2] == 1 means that positionPoles[0] can be - and positionPoles[1] can be +
 
     public Variable(int y1, int x1, int y2, int x2) {
-        this.positions[0][0] = y1;
-        this.positions[0][1] = x1;
-        this.positions[1][0] = y2;
-        this.positions[1][1] = x2;
+        this.positions[0][0] = y1; //i || i+1
+        this.positions[0][1] = x1; //j || j+1
+        this.positions[1][0] = y2; //i
+        this.positions[1][1] = x2; //j
         ////// always x1 > x2 || y1 > y2
     }
 
@@ -31,8 +30,24 @@ public class Variable {
         return isMagnet;
     }
 
+    public boolean isHorizontal(){
+        if(positions[0][0] == positions[1][0])
+            return true;
+
+        return false;
+    }
+
     public int[] getDomain() {
         return domain;
+    }
+
+    public int getDomainSize(){
+        int size = 0;
+        for(int i = 0; i < 3; i++){
+            if(domain[i] == 1)
+                size++;
+        }
+        return size;
     }
 
     public char[] getPositionPoles() {
@@ -66,4 +81,5 @@ public class Variable {
         }
         return returnedStr;
     }
+
 }
