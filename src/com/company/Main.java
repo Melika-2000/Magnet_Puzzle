@@ -46,16 +46,16 @@ public class Main {
                 if(i < rowNumber - 1 && intTable[i + 1][j] == intTable[i][j]){
                     Variable var =  new Variable(i + 1, j, i, j);
                     ArrayList arr = new ArrayList();
-                    key = i + "" + j;
+                    key = i + " " + j;
                     variables.put(key, var);
-                    key = (i+1) + "" + j;
+                    key = (i+1) + " " + j;
                     variables.put(key, var);
                 }
                 if(j < columnNumber - 1 && intTable[i][j + 1] == intTable[i][j]){
                     Variable var =  new Variable(i, j+1, i, j);
-                    key = i + "" + j;
+                    key = i + " " + j;
                     variables.put(key, var);
-                    key = i + "" + (j+1);
+                    key = i + " " + (j+1);
                     variables.put(key, var);
                 }
             }

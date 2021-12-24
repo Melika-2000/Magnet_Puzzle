@@ -48,15 +48,22 @@ public class Variable {
         isMagnet = magnet;
     }
 
-    public ArrayList<Integer> getOtherPosition(ArrayList<Integer> position) {
-        ArrayList<Integer> returnedArray = new ArrayList<>();
-        if(position.get(0) == this.positions[0][0] && position.get(1) == this.positions[0][1]){
-            returnedArray.add(this.positions[1][0]);
-            returnedArray.add(this.positions[1][1]);
-        }else if(position.get(0) == this.positions[1][0] && position.get(1) == this.positions[1][1]){
-            returnedArray.add(this.positions[0][0]);
-            returnedArray.add(this.positions[0][1]);
+    public String getOtherPosition(String position) {
+        String returnedStr = "";
+        try {
+            int spaceIndex = position.indexOf(" ");
+            String tempString = position.substring(0, spaceIndex);
+            int rowNum = Integer.parseInt(tempString);
+            tempString = position.substring(spaceIndex + 1, position.length());
+            int colNum = Integer.parseInt(tempString);
+            if (rowNum == this.positions[0][0] && colNum == this.positions[0][1]) {
+                returnedStr += this.positions[1][0] + " " + this.positions[1][1];
+            } else if (rowNum == this.positions[1][0] && colNum == this.positions[1][1]) {
+                returnedStr += this.positions[0][0] + " " + this.positions[0][1];
+            }
+        }catch(NumberFormatException e){
+            e.printStackTrace();
         }
-        return returnedArray;
+        return returnedStr;
     }
 }
