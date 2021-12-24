@@ -1,5 +1,4 @@
 package com.company;
-import java.util.ArrayList;
 
 public class Variable{
     private int[][] positions = new int[2][2];
@@ -81,5 +80,22 @@ public class Variable{
         }
         return returnedStr;
     }
+
+    public int getOtherPositionY(String position){
+        String yxString;
+        int y;
+        yxString = getOtherPosition(position);
+        y = Integer.parseInt(yxString.substring(0, yxString.indexOf(" ")));
+        return y;
+    }
+
+    public int getOtherPositionX(String position){
+        String yxString;
+        int x;
+        yxString = getOtherPosition(position);
+        x = Integer.parseInt(yxString.substring(yxString.indexOf(" ")+1));
+        return x;
+    }
+
 
 }

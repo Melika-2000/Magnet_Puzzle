@@ -49,7 +49,6 @@ public class Main {
             for(int j = 0; j < columnNumber; j++){
                 if(i < rowNumber - 1 && intTable[i + 1][j] == intTable[i][j]){
                     Variable var =  new Variable(i + 1, j, i, j);
-                    ArrayList arr = new ArrayList();
                     key = i + " " + j;
                     variables.put(key, var);
                     key = (i+1) + " " + j;
