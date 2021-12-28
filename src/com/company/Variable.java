@@ -14,7 +14,7 @@ public class Variable{
         this.positions[0][1] = x1; //j || j+1
         this.positions[1][0] = y2; //i
         this.positions[1][1] = x2; //j
-        ////// always x1 > x2 || y1 > y2
+        ////// always x1 >= x2 || y1 >= y2
     }
 
     public void setDomain(int[] domain) {
@@ -61,6 +61,9 @@ public class Variable{
     public void setMagnet(boolean magnet) {
         isMagnet = magnet;
     }
+    public boolean getIsMagnet(){
+        return isMagnet;
+    }
 
     public String getOtherPosition(String position) {
         String returnedStr = "";
@@ -79,6 +82,52 @@ public class Variable{
             e.printStackTrace();
         }
         return returnedStr;
+    }
+
+    public void selectValue(int d){
+
+        for(int i=0; i<3; i++){
+            if(i != d){
+                domain[i] = 0;
+            }
+            else
+                domain[i] = 1;
+        }
+
+    }
+
+    public String selectedValue(int y, int x){
+        int selected = -1;
+        if(this.getDomainSize() != 1)
+            return null;
+        for(int i=0; i<3; i++) {
+            if (domain[i] == 1)
+                selected = i;
+        }
+
+        if (selected == -1)
+            return null;
+        if (selected == 0)
+            return "0";
+
+        if(selected == 1){
+            if((this.isHorizontal() && x == positions[0][1]) ||
+                    (!this.isHorizontal() && y == positions[0][0])){
+                return "+";
+            }
+            else
+                return "-";
+        }
+        if (selected == 2){
+            if((this.isHorizontal() && x == positions[0][1]) ||
+                    (!this.isHorizontal() && y == positions[0][0])){
+                return "-";
+            }
+            else
+                return "+";
+
+        }
+        return null;
     }
 
     public int getOtherPositionY(String position){

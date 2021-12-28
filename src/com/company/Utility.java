@@ -233,10 +233,10 @@ public class Utility {
         return variables.get(index);
     }
 
-    public int LCV(Hashtable<String, Variable> variables, Variable variable) {
-
+    public ArrayList<Integer> LCV(Hashtable<String, Variable> variables, Variable variable) {
+        ArrayList<Integer> ordering = new ArrayList<>();
         if (variable.getDomain()[0] == 1)
-            return 0;
+            ordering.add(0);
 
         int count = 0;
         int min = 1000;
@@ -425,16 +425,19 @@ public class Utility {
 
             }
 
-            if (count < min) {
+            if (count < min) { //ba farz inke variable ba domain tohi handle shode
                 min = count;
                 minValue = i;
             }
             count = 0;
         }
+        ordering.add(minValue);
+        if(minValue == 1 && variable.getDomain()[2] == 1)
+            ordering.add(2);
+        if(minValue == 2 && variable.getDomain()[1] == 1)
+            ordering.add(1);
 
-        //az bein domain[1] va domain[2] uni ke mahdudiat kamtari
-        //ijad mikone ro barmigardune
-        return minValue;
+        return ordering;
     }
 
 }
