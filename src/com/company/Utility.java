@@ -7,10 +7,19 @@ import java.util.Hashtable;
 public class Utility {
     int rowNumber;
     int columnNumber;
+    int[] posRowNumbers;
+    int[] negRowNumbers;
+    int[] posColNumbers;
+    int[] negColNumbers;
 
-    public Utility(int rowNumber, int colomnNumber) {
+    public Utility(int rowNumber, int columnNumber, int[] negRowNumbers,
+                   int[] posRowNumbers, int[] negColNumbers, int[] posColNumbers) {
         this.rowNumber = rowNumber;
         this.columnNumber = columnNumber;
+        this.posRowNumbers = posRowNumbers;
+        this.negRowNumbers = negRowNumbers;
+        this.posColNumbers = posColNumbers;
+        this.negColNumbers = negColNumbers;
     }
 
     public void AC3(Hashtable<String, Variable> variables) {
@@ -439,5 +448,73 @@ public class Utility {
 
         return ordering;
     }
+
+
+        //vList aval khalie, variables kole moteghayeras
+    public ArrayList<Variable> CSP_BackTracking(ArrayList<Variable> vList, ArrayList<Variable> variables){
+
+        if(isComplete(vList))
+            return vList;
+
+        vList = this.AC3(variables);
+        for(int i =0; i<vList.size(); i++){
+            if(vList.get(i).getDomainSize() == 0)
+                return null;
+        }
+        ArrayList<Variable> vPrimList = notInA(vList);
+        Variable var = MRV(vPrimList);
+        ArrayList<Integer> ordering = new ArrayList<>();
+        ordering = LCV(variables,var);
+        for(int v : ordering){
+            var.selectValue(v);
+            vList.add(var);
+            vList = forwardChecking(variables,var,v,vList);
+            for(int i =0; i<vList.size(); i++){ //ye funcion jadid?
+                if(vList.get(i).getDomainSize() == 0)
+                    return null;
+            }
+            ArrayList<Variable> result = CSP_BackTracking(vList,variables);
+            if(result != null)
+                return result;
+        }
+        return null;
+
+    }
+
+    public ArrayList<Variable> notInA (ArrayList<Variable> variableArrayList){
+        //bara mane :/
+        for(int i = 0; i<variableArrayList.size(); i++){
+
+            //peida kardan value haii ke dar A nistan (meghdar dehi nashodan)
+
+        }
+    }
+
+    public boolean isComplete(ArrayList<Variable> vList) {
+        Variable var;
+        int count=0;
+        int sum = 0;
+
+        if(vList.size() == 0)
+            return false;
+        for(int i=0; i<vList.size(); i++){
+            var = vList.get(i);
+            if (var.getIsMagnet())
+                count++;
+        }
+        for (int i = 0; i < rowNumber; i++) {
+            for (int j = 0; j < columnNumber; j++) {
+                sum += negColNumbers[j];
+                sum += posColNumbers[j];
+            }
+            sum += negRowNumbers[i];
+            sum += posRowNumbers[i];
+        }
+
+        if(sum == count)
+            return true;
+        return false;
+    }
+
 
 }
