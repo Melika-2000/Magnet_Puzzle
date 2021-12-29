@@ -38,33 +38,33 @@ public class Main {
             }
         }
 
-        Hashtable<String, Variable> variables = new Hashtable<>();
+        Hashtable<String, Variable> v = new Hashtable<>();
         String key;
+        ArrayList<Variable> variables = new ArrayList<>();
 
         for(int i = 0; i < rowNumber; i++){
             for(int j = 0; j < columnNumber; j++){
                 if(i < rowNumber - 1 && intTable[i + 1][j] == intTable[i][j]){
                     Variable var =  new Variable(i + 1, j, i, j);
-                    key = i + " " + j;
-                    variables.put(key, var);
-                    key = (i+1) + " " + j;
-                    variables.put(key, var);
+                    variables.add(var);
                 }
                 if(j < columnNumber - 1 && intTable[i][j + 1] == intTable[i][j]){
                     Variable var =  new Variable(i, j+1, i, j);
-                    key = i + " " + j;
-                    variables.put(key, var);
-                    key = i + " " + (j+1);
-                    variables.put(key, var);
+                    variables.add(var);
                 }
             }
         }
 
-        Hashtable<String, Variable> vList = new Hashtable<>();
+        ArrayList<Variable> vList = new ArrayList<>();
         Utility function = new Utility(rowNumber, columnNumber, negRowNumbers,
                                       posRowNumbers, negColNumbers, posColNumbers);
 
-        function.CSP_BackTracking(vList,variables);
+        ArrayList<Variable> result;
+        result = function.CSP_BackTracking(vList, variables);
+        if(result == null){
+            System.out.println("no answers found");
+            System.exit(1);
+        }
 
         //chap nahayii
         Variable var;
@@ -72,7 +72,7 @@ public class Main {
         for(int i = 0; i < rowNumber; i++){
             for(int j = 0; j < columnNumber; j++) {
                 key = i + " " + j;
-                var = variables.get(key);
+                var = v.get(key);
                 value = var.selectedValue(i,j);
                 System.out.print(value + " ");
             }

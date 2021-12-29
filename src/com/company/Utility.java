@@ -242,7 +242,9 @@ public class Utility {
         return variables.get(index);
     }
 
-    public ArrayList<Integer> LCV(Hashtable<String, Variable> variables, Variable variable) {
+    public ArrayList<Integer> LCV(ArrayList<Variable> variableArrayList, Variable variable) {
+
+        Hashtable<String, Variable> variables = listToHash(variableArrayList);
         ArrayList<Integer> ordering = new ArrayList<>();
         if (variable.getDomain()[0] == 1)
             ordering.add(0);
@@ -449,30 +451,28 @@ public class Utility {
         return ordering;
     }
 
-
         //vList aval khalie, variables kole moteghayeras
     public ArrayList<Variable> CSP_BackTracking(ArrayList<Variable> vList, ArrayList<Variable> variables){
 
         if(isComplete(vList))
             return vList;
 
-        vList = this.AC3(variables);
-        for(int i =0; i<vList.size(); i++){
-            if(vList.get(i).getDomainSize() == 0)
-                return null;
-        }
-        ArrayList<Variable> vPrimList = notInA(vList);
+        ArrayList<Variable> vPrimList = findOtherVariables(vList, variables);
+
+        vList = AC3(vPrimList);
+        if(hasEmptyDomain(vList))
+            return null;
+
+
         Variable var = MRV(vPrimList);
-        ArrayList<Integer> ordering = new ArrayList<>();
-        ordering = LCV(variables,var);
+        ArrayList<Integer> ordering  = LCV(variables,var);
+
         for(int v : ordering){
             var.selectValue(v);
             vList.add(var);
-            vList = forwardChecking(variables,var,v,vList);
-            for(int i =0; i<vList.size(); i++){ //ye funcion jadid?
-                if(vList.get(i).getDomainSize() == 0)
-                    return null;
-            }
+            vList = forwardChecking(vPrimList,var,v);
+            if(hasEmptyDomain(vList))
+                return null;
             ArrayList<Variable> result = CSP_BackTracking(vList,variables);
             if(result != null)
                 return result;
@@ -481,40 +481,91 @@ public class Utility {
 
     }
 
-    public ArrayList<Variable> notInA (ArrayList<Variable> variableArrayList){
-        //bara mane :/
-        for(int i = 0; i<variableArrayList.size(); i++){
+    private boolean hasEmptyDomain(ArrayList<Variable> vList){
 
-            //peida kardan value haii ke dar A nistan (meghdar dehi nashodan)
-
+        for(int i =0; i<vList.size(); i++){
+            if(vList.get(i).getDomainSize() == 0)
+                return true;
         }
-    }
-
-    public boolean isComplete(ArrayList<Variable> vList) {
-        Variable var;
-        int count=0;
-        int sum = 0;
-
-        if(vList.size() == 0)
-            return false;
-        for(int i=0; i<vList.size(); i++){
-            var = vList.get(i);
-            if (var.getIsMagnet())
-                count++;
-        }
-        for (int i = 0; i < rowNumber; i++) {
-            for (int j = 0; j < columnNumber; j++) {
-                sum += negColNumbers[j];
-                sum += posColNumbers[j];
-            }
-            sum += negRowNumbers[i];
-            sum += posRowNumbers[i];
-        }
-
-        if(sum == count)
-            return true;
         return false;
     }
 
+    private ArrayList<Variable> findOtherVariables (ArrayList<Variable> vList, ArrayList<Variable> allVariables){
+        ArrayList<Variable> vPrimList = new ArrayList<>();
+        boolean found = false;
+        for(Variable variable : allVariables){
+            for(Variable var : vList){
+                if(variable.equals(var)) {
+                    found = true;
+                    break;
+                }
+            }
+            if (found == false){
+                vPrimList.add(variable);
+            }
+            found = false;
+        }
+        return vPrimList;
+    }
 
+    private boolean isComplete(ArrayList<Variable> variableArrayList) {
+        Variable var;
+        int rowN = 0;
+        int columnN = 0;
+        int rowP = 0;
+        int columnP = 0;
+        String value;
+
+        if(variableArrayList.size() != (rowNumber * columnNumber)/2)
+            return false; //age hame moteghayera meghdar naagerefte bashan
+
+        Hashtable<String, Variable> variables = listToHash(variableArrayList);
+
+        for (int i = 0; i < rowNumber; i++) {
+            for (int j = 0; j < columnNumber; j++) {
+
+                var = variables.get(i + " " + j);
+                value = var.selectedValue(i,j);
+                if(value == "+")
+                    rowP++;
+                if (value == "-")
+                    rowN++;
+            }
+            if(posRowNumbers[i] != rowP || negRowNumbers[i] != rowN)
+                return false;
+            rowN = 0;
+            rowP =0;
+        }
+
+        for (int j = 0; j < columnNumber; j++) {
+            for (int i = 0; i < rowNumber; i++) {
+
+                var = variables.get(i + " " + j);
+                value = var.selectedValue(i,j);
+                if(value == "+")
+                    columnP++;
+                if (value == "-")
+                    columnP++;
+            }
+            if(posColNumbers[j] != columnP || negColNumbers[j] != columnN)
+                return false;
+            columnN = 0;
+            columnP = 0;
+        }
+
+        return true;
+    }
+
+    private Hashtable<String, Variable> listToHash(ArrayList<Variable> variables){
+
+        Hashtable<String, Variable> varHash = new Hashtable<>();
+
+        for(Variable var: variables){
+            int[][] positions = var.getPositions();
+            varHash.put(positions[0][0] + " " + positions[0][1], var);
+            varHash.put(positions[1][0] + " " + positions[1][1], var);
+        }
+
+        return varHash;
+    }
 }
