@@ -2,7 +2,7 @@ package com.company;
 
 public class Variable{
     private int[][] positions = new int[2][2];
-    private boolean isMagnet;
+    private boolean isMagnet = false;
     private char[] positionPoles = new char[2];
     int[] domain = {1, 1, 1};
     //// if domain[0] == 1 means that isMagnet can be false

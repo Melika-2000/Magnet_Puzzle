@@ -57,7 +57,7 @@ public class Main {
 
         ArrayList<Variable> vList = new ArrayList<>();
         Utility function = new Utility(rowNumber, columnNumber, negRowNumbers,
-                                      posRowNumbers, negColNumbers, posColNumbers);
+                posRowNumbers, negColNumbers, posColNumbers);
 
         ArrayList<Variable> result;
         result = function.CSP_BackTracking(vList, variables);
