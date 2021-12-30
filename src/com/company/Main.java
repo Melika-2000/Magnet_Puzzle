@@ -59,11 +59,12 @@ public class Main {
         Utility function = new Utility(rowNumber, columnNumber, negRowNumbers,
                 posRowNumbers, negColNumbers, posColNumbers);
 
+
         ArrayList<Variable> result;
         result = function.CSP_BackTracking(vList, variables);
         if(result == null){
             System.out.println("no answers found");
-            System.exit(1);
+            System.exit(2);
         }
 
         //chap nahayii

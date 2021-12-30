@@ -5,6 +5,7 @@ public class Variable{
     private boolean isMagnet = false;
     private char[] positionPoles = new char[2];
     int[] domain = {1, 1, 1};
+    int selectedValue = -1;
     //// if domain[0] == 1 means that isMagnet can be false
     //// if domain[1] == 1 means that positionPoles[0] can be + and positionPoles[1] can be -
     //// if domain[2] == 1 means that positionPoles[0] can be - and positionPoles[1] can be +
@@ -86,24 +87,17 @@ public class Variable{
 
     public void selectValue(int d){
 
-        for(int i=0; i<3; i++){
-            if(i != d){
-                domain[i] = 0;
-            }
-            else
-                domain[i] = 1;
+        if(domain[d] != 1) {
+            System.out.println("error");
+            System.exit(7);
         }
+        selectedValue = d;
+
 
     }
 
     public String selectedValue(int y, int x){
-        int selected = -1;
-        if(this.getDomainSize() != 1)
-            return null;
-        for(int i=0; i<3; i++) {
-            if (domain[i] == 1)
-                selected = i;
-        }
+        int selected = selectedValue;
 
         if (selected == -1)
             return null;
