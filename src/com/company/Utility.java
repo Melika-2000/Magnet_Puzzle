@@ -904,7 +904,6 @@ public class Utility {
         }
         System.out.println("------");
 
-        // changed
         for (int v : ordering) {
             int[][] pos = var.getPositions();
             System.out.println(v + " -->[ " + var.getDomain()[0] + "," + var.getDomain()[1] + "," + var.getDomain()[2] + "]" +
@@ -948,13 +947,6 @@ public class Utility {
         boolean found = false;
         for (Variable variable : allVariables) {
             for (Variable var : vList) {
-                /*
-                int[][] variablePos = variable.getPositions();
-                int[][] varPos = var.getPositions();
-                variablePos[0][0] == varPos[0][0] && variablePos[0][1] == variablePos[0][1] &&
-                        variablePos[1][0] == varPos[1][0] && variablePos[1][1] == varPos[1][1]
-
-                 */
                 if (variable.equals(var)) {
                     found = true;
                     break;
