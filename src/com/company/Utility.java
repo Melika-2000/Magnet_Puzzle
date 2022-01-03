@@ -904,7 +904,7 @@ public class Utility {
         }
         System.out.println("------");
 
-
+        // changed
         for (int v : ordering) {
             int[][] pos = var.getPositions();
             System.out.println(v + " -->[ " + var.getDomain()[0] + "," + var.getDomain()[1] + "," + var.getDomain()[2] + "]" +
