@@ -1,10 +1,13 @@
 package com.company;
 
-public class Variable{
+public class Variable {
     private int[][] positions = new int[2][2];
     private boolean isMagnet = false;
     private char[] positionPoles = new char[2];
     int[] domain = {1, 1, 1};
+    int[] Pdomain = {1, 1, 1};
+    int[] Pdomain2 = {1, 1, 1};
+    //int[] initialDomain
     //// if domain[0] == 1 means that isMagnet can be false
     //// if domain[1] == 1 means that positionPoles[0] can be + and positionPoles[1] can be -
     //// if domain[2] == 1 means that positionPoles[0] can be - and positionPoles[1] can be +
@@ -29,8 +32,8 @@ public class Variable{
         return isMagnet;
     }
 
-    public boolean isHorizontal(){
-        if(positions[0][0] == positions[1][0])
+    public boolean isHorizontal() {
+        if (positions[0][0] == positions[1][0])
             return true;
 
         return false;
@@ -40,10 +43,10 @@ public class Variable{
         return domain;
     }
 
-    public int getDomainSize(){
+    public int getDomainSize() {
         int size = 0;
-        for(int i = 0; i < 3; i++){
-            if(domain[i] == 1)
+        for (int i = 0; i < 3; i++) {
+            if (domain[i] == 1)
                 size++;
         }
         return size;
@@ -61,7 +64,8 @@ public class Variable{
     public void setMagnet(boolean magnet) {
         isMagnet = magnet;
     }
-    public boolean getIsMagnet(){
+
+    public boolean getIsMagnet() {
         return isMagnet;
     }
 
@@ -78,29 +82,63 @@ public class Variable{
             } else if (rowNum == this.positions[1][0] && colNum == this.positions[1][1]) {
                 returnedStr += this.positions[0][0] + " " + this.positions[0][1];
             }
-        }catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             e.printStackTrace();
         }
         return returnedStr;
     }
 
-    public void selectValue(int d){
+    public void setPdomainToDomain() { ///////////////////////////////////////////////
+        for (int i = 0; i < 3; i++) {
+            domain[i] = Pdomain[i];
+        }
+    }
 
-        for(int i=0; i<3; i++){
-            if(i != d){
+    public void selectValue(int d) {
+
+        for (int i = 0; i < 3; i++) {
+            Pdomain[i] = domain[i];
+        }
+
+        if (d != 0)
+            this.setMagnet(true);
+
+        if (domain[d] != 1) {
+            System.out.println(this.getPositions()[0][0] + " " + this.getPositions()[0][1]);
+            System.out.println("error");
+            System.exit(7);
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if (i != d) {
                 domain[i] = 0;
-            }
-            else
+            } else
                 domain[i] = 1;
         }
 
     }
 
-    public String selectedValue(int y, int x){
+    public void savePdomain() {
+        for (int i = 0; i < 3; i++) {
+            this.Pdomain2[i] = domain[i];
+        }
+
+    }
+
+    public void loadPdomain() {
+
+        for (int i = 0; i < 3; i++) {
+            this.domain[i] = Pdomain2[i];
+        }
+
+    }
+
+    public String selectedValue(int y, int x) {
+
         int selected = -1;
-        if(this.getDomainSize() != 1)
-            return null;
-        for(int i=0; i<3; i++) {
+        if (this.getDomainSize() != 1)
+            return "n";
+        for (int i = 0; i < 3; i++) {
             if (domain[i] == 1)
                 selected = i;
         }
@@ -110,27 +148,25 @@ public class Variable{
         if (selected == 0)
             return "0";
 
-        if(selected == 1){
-            if((this.isHorizontal() && x == positions[0][1]) ||
-                    (!this.isHorizontal() && y == positions[0][0])){
+        if (selected == 1) {
+            if ((this.isHorizontal() && x == positions[0][1]) ||
+                    (!this.isHorizontal() && y == positions[0][0])) {
                 return "+";
-            }
-            else
+            } else
                 return "-";
         }
-        if (selected == 2){
-            if((this.isHorizontal() && x == positions[0][1]) ||
-                    (!this.isHorizontal() && y == positions[0][0])){
+        if (selected == 2) {
+            if ((this.isHorizontal() && x == positions[0][1]) ||
+                    (!this.isHorizontal() && y == positions[0][0])) {
                 return "-";
-            }
-            else
+            } else
                 return "+";
 
         }
         return null;
     }
 
-    public int getOtherPositionY(String position){
+    public int getOtherPositionY(String position) {
         String yxString;
         int y;
         yxString = getOtherPosition(position);
@@ -138,11 +174,11 @@ public class Variable{
         return y;
     }
 
-    public int getOtherPositionX(String position){
+    public int getOtherPositionX(String position) {
         String yxString;
         int x;
         yxString = getOtherPosition(position);
-        x = Integer.parseInt(yxString.substring(yxString.indexOf(" ")+1));
+        x = Integer.parseInt(yxString.substring(yxString.indexOf(" ") + 1));
         return x;
     }
 
