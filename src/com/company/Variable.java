@@ -136,8 +136,8 @@ public class Variable {
     public String selectedValue(int y, int x) {
 
         int selected = -1;
-        if (this.getDomainSize() != 1)
-            return "n";
+        if (this.getDomainSize() > 1)
+            return "z";
         for (int i = 0; i < 3; i++) {
             if (domain[i] == 1)
                 selected = i;
