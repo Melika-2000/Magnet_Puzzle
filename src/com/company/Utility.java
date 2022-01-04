@@ -39,7 +39,6 @@ public class Utility {
             if (selectedVar.getPositions()[1][0] >= 1) {
                 boolean isACompleteNeighbor = false;
                 if ((tempVar = getVariable(vPrimeList, selectedVar.getPositions()[1][0] - 1, selectedVar.getPositions()[1][1])) != null) {
-                    if(selectedVar.getPositions()[0][0] == 1 && selectedVar.getPositions()[0][1] == 6 && tempVar.getPositions()[0][0] == 2 && tempVar.getPositions()[0][1] == 2)
                     XAndYPositions[neighVars.size()][0] = 1;
                     if (tempVar.getPositions()[0][0] == selectedVar.getPositions()[1][0] - 1 && tempVar.getPositions()[0][1] == selectedVar.getPositions()[1][1])
                         XAndYPositions[neighVars.size()][1] = 0;
@@ -51,7 +50,6 @@ public class Utility {
                 }
                 if (selectedVar.isHorizontal() && !isACompleteNeighbor) {
                     if ((tempVar = getVariable(vPrimeList, selectedVar.getPositions()[0][0] - 1, selectedVar.getPositions()[0][1])) != null) {
-                        if(selectedVar.getPositions()[0][0] == 1 && selectedVar.getPositions()[0][1] == 6 && tempVar.getPositions()[0][0] == 2 && tempVar.getPositions()[0][1] == 2)
                         XAndYPositions[neighVars.size()][0] = 0;
                         if (tempVar.getPositions()[0][0] == selectedVar.getPositions()[0][0] - 1 && tempVar.getPositions()[0][1] == selectedVar.getPositions()[0][1])
                             XAndYPositions[neighVars.size()][1] = 0;
@@ -63,7 +61,6 @@ public class Utility {
             if (selectedVar.getPositions()[1][1] >= 1) {
                 boolean isACompleteNeighbor = false;
                 if ((tempVar = getVariable(vPrimeList, selectedVar.getPositions()[1][0], (selectedVar.getPositions()[1][1] - 1))) != null) {
-                    if(selectedVar.getPositions()[0][0] == 1 && selectedVar.getPositions()[0][1] == 6 && tempVar.getPositions()[0][0] == 2 && tempVar.getPositions()[0][1] == 2)
                     XAndYPositions[neighVars.size()][0] = 1;
                     if (tempVar.getPositions()[0][0] == selectedVar.getPositions()[1][0] && tempVar.getPositions()[0][1] == selectedVar.getPositions()[1][1] - 1)
                         XAndYPositions[neighVars.size()][1] = 0;
@@ -75,7 +72,6 @@ public class Utility {
                 }
                 if (!selectedVar.isHorizontal() && !isACompleteNeighbor) {
                     if ((tempVar = getVariable(vPrimeList, selectedVar.getPositions()[0][0], (selectedVar.getPositions()[0][1] - 1))) != null) {
-                        if(selectedVar.getPositions()[0][0] == 1 && selectedVar.getPositions()[0][1] == 6 && tempVar.getPositions()[0][0] == 2 && tempVar.getPositions()[0][1] == 2)
                         XAndYPositions[neighVars.size()][0] = 0;
                         if (tempVar.getPositions()[0][0] == selectedVar.getPositions()[0][0] && tempVar.getPositions()[0][1] == selectedVar.getPositions()[0][1] - 1)
                             XAndYPositions[neighVars.size()][1] = 0;
@@ -87,7 +83,6 @@ public class Utility {
             if (selectedVar.getPositions()[0][0] < rowNumber - 1) {
                 boolean isACompleteNeighbor = false;
                 if ((tempVar = getVariable(vPrimeList, selectedVar.getPositions()[0][0] + 1, selectedVar.getPositions()[0][1])) != null) {
-                    if(selectedVar.getPositions()[0][0] == 1 && selectedVar.getPositions()[0][1] == 6 && tempVar.getPositions()[0][0] == 2 && tempVar.getPositions()[0][1] == 2)
                     XAndYPositions[neighVars.size()][0] = 0;
                     if (tempVar.getPositions()[0][0] == selectedVar.getPositions()[0][0] + 1 && tempVar.getPositions()[0][1] == selectedVar.getPositions()[0][1]) {
                         XAndYPositions[neighVars.size()][1] = 0;
@@ -97,7 +92,6 @@ public class Utility {
                 }
                 if (selectedVar.isHorizontal() && !isACompleteNeighbor) {
                     if ((tempVar = getVariable(vPrimeList, selectedVar.getPositions()[1][0] + 1, selectedVar.getPositions()[1][1])) != null) {
-                        if(selectedVar.getPositions()[0][0] == 1 && selectedVar.getPositions()[0][1] == 6 && tempVar.getPositions()[0][0] == 2 && tempVar.getPositions()[0][1] == 2)
                         XAndYPositions[neighVars.size()][0] = 1;
                         if (tempVar.getPositions()[0][0] == selectedVar.getPositions()[1][0] + 1 && tempVar.getPositions()[0][1] == selectedVar.getPositions()[1][1])
                             XAndYPositions[neighVars.size()][1] = 0;
@@ -109,7 +103,6 @@ public class Utility {
             if (selectedVar.getPositions()[0][1] < columnNumber - 1) {
                 boolean isACompleteNeighbor = false;
                 if ((tempVar = getVariable(vPrimeList, selectedVar.getPositions()[0][0], selectedVar.getPositions()[0][1] + 1)) != null) {
-                    if(selectedVar.getPositions()[0][0] == 1 && selectedVar.getPositions()[0][1] == 6 && tempVar.getPositions()[0][0] == 2 && tempVar.getPositions()[0][1] == 2)
                     XAndYPositions[neighVars.size()][0] = 0;
                     if (tempVar.getPositions()[0][0] == selectedVar.getPositions()[0][0] && tempVar.getPositions()[0][1] == selectedVar.getPositions()[0][1] + 1) {
                         XAndYPositions[neighVars.size()][1] = 0;
@@ -119,7 +112,6 @@ public class Utility {
                 }
                 if (!selectedVar.isHorizontal() && !isACompleteNeighbor) {
                     if ((tempVar = getVariable(vPrimeList, selectedVar.getPositions()[1][0], selectedVar.getPositions()[1][1] + 1)) != null) {
-                        if(selectedVar.getPositions()[0][0] == 1 && selectedVar.getPositions()[0][1] == 6 && tempVar.getPositions()[0][0] == 2 && tempVar.getPositions()[0][1] == 2)
                         XAndYPositions[neighVars.size()][0] = 1;
                         if (tempVar.getPositions()[0][0] == selectedVar.getPositions()[1][0] && tempVar.getPositions()[0][1] == selectedVar.getPositions()[1][1] + 1)
                             XAndYPositions[neighVars.size()][1] = 0;
@@ -130,20 +122,19 @@ public class Utility {
             }
             for (int i = 0; i < neighVars.size(); i++) {
                 if (removeValues(originalVariables, selectedVar, neighVars.get(i), XAndYPositions[i][0], XAndYPositions[i][1])) {
-/*
-                    System.out.println("neighbours domains of[" + selectedVar.getPositions()[0][0] + "][" + selectedVar.getPositions()[0][1] + "] are");
-                    System.out.println("current domain is [" + selectedVar.getPositions()[0][0] + "][" + selectedVar.getPositions()[0][1] + "]" + selectedVar.domain[0] + " " + selectedVar.domain[1] + " " + selectedVar.domain[2]);
-                    System.out.println("neighbour domain is [" + neighVars.get(i).getPositions()[0][0] + "][" + neighVars.get(i).getPositions()[0][1] + "] " + neighVars.get(i).domain[0] + " " + neighVars.get(i).domain[1] + " " + neighVars.get(i).domain[2]);
-                    printDomain(originalVariables, selectedVar);
-                    System.out.println();
-                    System.out.println();
-*/
-//                    for(int q = 0 ; q < originalVariables.size(); q++){
-//                        System.out.println("[" + originalVariables.get(q).getPositions()[0][0] + "][" +  originalVariables.get(q).getPositions()[0][1] + "]" + originalVariables.get(q).domain[0] + " " + originalVariables.get(q).domain[1] + " " + originalVariables.get(q).domain[2]);
-//                    }
-                    if (neighVars.get(i).getDomain()[0] == 0 && neighVars.get(i).getDomain()[1] == 0 && neighVars.get(i).getDomain()[2] == 0) {
+                    if (neighVars.get(i).getDomainSize() == 0) {
                         contradiction = true;
                     }
+/*
+                    boolean find = false;
+                    for (Variable variable : variables) {
+                        if (variable == neighVars.get(i)) {
+                            find = true;
+                            break;
+                        }
+                    }
+                    if(!find) variables.add(neighVars.get(i));
+*/
                 }
             }
         }
@@ -195,7 +186,6 @@ public class Utility {
                     } else
                         X.domain[i] = 1;
                 }
-
                 removeDomain = (y == 1 && x == 1 && y_position == x_position);
                 if (removeDomain) {
                     remove[y][x] = removeDomain;
@@ -225,20 +215,20 @@ public class Utility {
 
                 for (Integer rowNumber : rowNumbers) {
                     int emptyHomes = 0;
-                    if (y == 1 && Y.getDomain()[1] == 1) {
+                    if (y == 1) {
 
                         tempPosRowNumbers[Y.getPositions()[0][0]] -= 1;
                         tempNegRowNumbers[Y.getPositions()[1][0]] -= 1;
 
-                    } else if (y == 2 && Y.getDomain()[2] == 1) {
+                    } else if (y == 2) {
 
                         tempPosRowNumbers[Y.getPositions()[1][0]] -= 1;
                         tempNegRowNumbers[Y.getPositions()[0][0]] -= 1;
                     }
-                    if (x == 1 && X.getDomain()[1] == 1) {
+                    if (x == 1) {
                         tempPosRowNumbers[X.getPositions()[0][0]] -= 1;
                         tempNegRowNumbers[X.getPositions()[1][0]] -= 1;
-                    } else if (x == 2 && X.getDomain()[2] == 1) {
+                    } else if (x == 2) {
 
                         tempPosRowNumbers[X.getPositions()[1][0]] -= 1;
                         tempNegRowNumbers[X.getPositions()[0][0]] -= 1;
@@ -274,7 +264,6 @@ public class Utility {
                         }
                     }
                     if (!(emptyHomes >= tempNegRowNumbers[rowNumber] + tempPosRowNumbers[rowNumber])) {
-                        //System.out.println("y is " + y + " x is " + x + "row number is " + rowNumber + " emptyHomes is :" + emptyHomes + " tempnegrownumbers is : " + tempNegRowNumbers[rowNumber] + " tempposRowNumbers is : " + tempPosRowNumbers[rowNumber]);
                         removeDomain = true;
                         for (int i = 0; i < this.rowNumber; i++) {
                             tempNegRowNumbers[i] = negRowNumbers[i];
@@ -326,9 +315,9 @@ public class Utility {
                         tempNegColNumbers[X.getPositions()[0][1]] -= 1;
                         tempPosColNumbers[X.getPositions()[1][1]] -= 1;
                     }
+
                     for (int i = 0; i < rowNumber; i++) {
                         Variable tempVar = getVariable(variables, i, columnNumber);
-                        if(tempVar == null) System.out.println(i + " columnNumber is " + columnNumber);
                         if (tempVar.getDomainSize() == 2 || tempVar.getDomainSize() == 3) {
                             if (tempVar.getDomain()[2] == 1 && tempVar.getDomain()[1] == 1){
                                 emptyHomes++;
@@ -357,7 +346,7 @@ public class Utility {
                         }
                     }
                     if (!(emptyHomes >= tempNegColNumbers[columnNumber] + tempPosColNumbers[columnNumber])) {
-                        //System.out.println("column number is :" + columnNumber + " emptyHomes is :" + emptyHomes + " tempnegcolnumbers is : " + tempNegColNumbers[columnNumber] + " tempposcolNumbers is : " + tempPosColNumbers[columnNumber]);
+                        //System.out.println("column number is :" + columnNumber + " emptyHomes is :" + emptyHomes + " tempnegcolnumbers is : " + tempNegColNumbers[columnNumber] + " tempPoscolNumbers is : " + tempPosColNumbers[columnNumber]);
                         removeDomain = true;
                         for (int i = 0; i < this.rowNumber; i++) {
                             tempNegRowNumbers[i] = negRowNumbers[i];
@@ -382,7 +371,6 @@ public class Utility {
             }
         }
         System.arraycopy(XDomain, 0, X.domain, 0, 3);
-        //System.out.println(remove[0][0] && remove[0][1] && remove[0][2]);
         int[] newDomain = {YDomain[0] == 1 && remove[0][0] && remove[0][1] && remove[0][2] ? 0 : 1,YDomain[1] == 1 && remove[1][0] && remove[1][1] && remove[1][2] ? 0 : 1, YDomain[2] == 1 && remove[2][0] && remove[2][1] && remove[2][2] ? 0 : 1};
         Y.setDomain(newDomain);
         return ((remove[0][0] && remove[0][1] && remove[0][2]) || (remove[1][0] && remove[1][1] && remove[1][2]) || (remove[2][0] && remove[2][1] && remove[2][2]));
@@ -506,81 +494,6 @@ public class Utility {
                 }
             }
         }
-            /*
-        }
-        Set<Integer> rowNumbers = new HashSet<>();
-        rowNumbers.add(selectedVar.getPositions()[0][0]);
-        rowNumbers.add(selectedVar.getPositions()[1][0]);
-        for (Integer rowNumber : rowNumbers) {
-            //int emptyHomes = 0;
-            //ArrayList<Variable> emptyVarialbes = new ArrayList<>();
-            for (int i = 0; i < columnNumber; i++) {
-                Variable tempVar = getVariable(variables, rowNumber, i);
-                if (!tempVar.isMagnet() && (tempVar.getDomain()[0] == 0 && tempVar.getDomain()[1] == 0 && tempVar.getDomain()[2] == 1 || tempVar.getDomain()[0] == 0 && tempVar.getDomain()[1] == 1 && tempVar.getDomain()[2] == 1)) {
-                    tempVar.setMagnet(true);
-                    if (tempVar.getDomain()[1] == 1) {
-                        posRowNumbers[tempVar.getPositions()[0][0]] -= 1;
-                        posColNumbers[tempVar.getPositions()[0][1]] -= 1;
-                        negColNumbers[tempVar.getPositions()[1][1]] -= 1;
-                        negRowNumbers[tempVar.getPositions()[1][0]] -= 1;
-                    } else {
-                        posRowNumbers[tempVar.getPositions()[1][0]] -= 1;
-                        posColNumbers[tempVar.getPositions()[1][1]] -= 1;
-                        negColNumbers[tempVar.getPositions()[0][1]] -= 1;
-                        negRowNumbers[tempVar.getPositions()[0][0]] -= 1;
-                    }
-                }
-//                if(!tempVar.isMagnet()){
-//                    emptyHomes++;
-//                    //emptyVarialbes.add(tempVar);
-//                }
-                if(tempVar.isHorizontal()) i++;
-            }
-//            if(emptyHomes == posRowNumbers[rowNumber] && negRowNumbers[rowNumber] == 0){
-//                for(int j = 0; j < emptyVarialbes.size(); j++){
-//                    if()
-//                    int[] domain = {}
-//                    emptyVarialbes.get(j).setDomain();
-//                }
-//            }
-        }
-        Set<Integer> colNumbers = new HashSet<>();
-        rowNumbers.add(selectedVar.getPositions()[0][1]);
-        rowNumbers.add(selectedVar.getPositions()[1][1]);
-        for (Integer colNumber : colNumbers) {
-            //int emptyHomes = 0;
-            //ArrayList<Variable> emptyVarialbes = new ArrayList<>();
-            for (int i = 0; i < rowNumber; i++) {
-                Variable tempVar = getVariable(variables, colNumber, i);
-                if (!tempVar.isMagnet() && (tempVar.getDomain()[0] == 0 && tempVar.getDomain()[1] == 0 && tempVar.getDomain()[2] == 1 || tempVar.getDomain()[0] == 0 && tempVar.getDomain()[1] == 1 && tempVar.getDomain()[2] == 1)) {
-                    tempVar.setMagnet(true);
-                    if (tempVar.getDomain()[1] == 1) {
-                        posRowNumbers[tempVar.getPositions()[0][0]] -= 1;
-                        posColNumbers[tempVar.getPositions()[0][1]] -= 1;
-                        negColNumbers[tempVar.getPositions()[1][1]] -= 1;
-                        negRowNumbers[tempVar.getPositions()[1][0]] -= 1;
-                    } else {
-                        posRowNumbers[tempVar.getPositions()[1][0]] -= 1;
-                        posColNumbers[tempVar.getPositions()[1][1]] -= 1;
-                        negColNumbers[tempVar.getPositions()[0][1]] -= 1;
-                        negRowNumbers[tempVar.getPositions()[0][0]] -= 1;
-                    }
-                }
-//                if(!tempVar.isMagnet()){
-//                    emptyHomes++;
-//                    //emptyVarialbes.add(tempVar);
-//                }
-                if(tempVar.isHorizontal()) i++;
-            }
-//            if(emptyHomes == posRowNumbers[rowNumber] && negRowNumbers[rowNumber] == 0){
-//                for(int j = 0; j < emptyVarialbes.size(); j++){
-//                    if()
-//                    int[] domain = {}
-//                    emptyVarialbes.get(j).setDomain();
-//                }
-//            }
-        */
-
     }
 
     public void load_PDomain_OfVarNeigh(ArrayList<Variable> variables, Variable selectedVar, int[][] neighboursDomain) {
@@ -657,45 +570,6 @@ public class Utility {
             }
         }
 
-    }
-
-    public void printDomain(ArrayList<Variable> variables, Variable selectedVar) {
-        System.out.println("neighbours domains of[" + selectedVar.getPositions()[0][0] + "][" + selectedVar.getPositions()[0][1] + "] are");
-        if (selectedVar.getPositions()[1][0] >= 1) {
-            Variable tempVar = getVariable(variables, selectedVar.getPositions()[1][0] - 1, selectedVar.getPositions()[1][1]);
-            System.out.println(tempVar.getPositions()[0][0] + " " + tempVar.getPositions()[0][1] + " current domain is:" + tempVar.getDomain()[0] + " " + tempVar.getDomain()[1] + " " + tempVar.getDomain()[2]);
-            if (selectedVar.isHorizontal()) {
-                tempVar = getVariable(variables, selectedVar.getPositions()[0][0] - 1, selectedVar.getPositions()[0][1]);
-                System.out.println(tempVar.getPositions()[0][0] + " " + tempVar.getPositions()[0][1] + " current domain is:" + tempVar.getDomain()[0] + " " + tempVar.getDomain()[1] + " " + tempVar.getDomain()[2]);
-            }
-        }
-        if (selectedVar.getPositions()[1][1] >= 1) {
-            Variable tempVar = getVariable(variables, selectedVar.getPositions()[1][0], selectedVar.getPositions()[1][1] - 1);
-            System.out.println(tempVar.getPositions()[0][0] + " " + tempVar.getPositions()[0][1] + " current domain is:" + tempVar.getDomain()[0] + " " + tempVar.getDomain()[1] + " " + tempVar.getDomain()[2]);
-            ///System.out.println(tempVar.getPositions()[0][0] + " " + tempVar.getPositions()[0][1] + " PDomain2 is :" + tempVar.domain[0] + " " + tempVar.domain[1] + " " + tempVar.domain[2]);
-            if (!selectedVar.isHorizontal()) {
-                tempVar = getVariable(variables, selectedVar.getPositions()[0][0], selectedVar.getPositions()[0][1] - 1);
-                System.out.println(tempVar.getPositions()[0][0] + " " + tempVar.getPositions()[0][1] + " current domain is:" + tempVar.getDomain()[0] + " " + tempVar.getDomain()[1] + " " + tempVar.getDomain()[2]);
-            }
-        }
-        if (selectedVar.getPositions()[0][0] < rowNumber - 1) {
-            Variable tempVar = getVariable(variables, selectedVar.getPositions()[0][0] + 1, selectedVar.getPositions()[0][1]);
-            System.out.println(tempVar.getPositions()[0][0] + " " + tempVar.getPositions()[0][1] + " current domain is:" + tempVar.getDomain()[0] + " " + tempVar.getDomain()[1] + " " + tempVar.getDomain()[2]);
-            if (selectedVar.isHorizontal()) {
-                tempVar = getVariable(variables, selectedVar.getPositions()[1][0] + 1, selectedVar.getPositions()[1][1]);
-                System.out.println(tempVar.getPositions()[0][0] + " " + tempVar.getPositions()[0][1] + " current domain is:" + tempVar.getDomain()[0] + " " + tempVar.getDomain()[1] + " " + tempVar.getDomain()[2]);
-            }
-        }
-        if (selectedVar.getPositions()[0][1] < columnNumber - 1) {
-            Variable tempVar = getVariable(variables, selectedVar.getPositions()[0][0], selectedVar.getPositions()[0][1] + 1);
-            System.out.println(tempVar.getPositions()[0][0] + " " + tempVar.getPositions()[0][1] + " current domain is:" + tempVar.getDomain()[0] + " " + tempVar.getDomain()[1] + " " + tempVar.getDomain()[2]);
-            if (!selectedVar.isHorizontal()) {
-                tempVar = getVariable(variables, selectedVar.getPositions()[1][0], selectedVar.getPositions()[1][1] + 1);
-                System.out.println(tempVar.getPositions()[0][0] + " " + tempVar.getPositions()[0][1] + " current domain is:" + tempVar.getDomain()[0] + " " + tempVar.getDomain()[1] + " " + tempVar.getDomain()[2]);
-
-            }
-        }
-        System.out.println("neighbors domain finished");
     }
 
     public Variable MRV(ArrayList<Variable> variables) {
@@ -918,14 +792,6 @@ public class Utility {
         if (minValue == 2 && variable.getDomain()[1] == 1)
             ordering.add(1);
 
-//        System.out.println("-----------");
-//        System.out.println("["+variable.getDomain()[0]+","+variable.getDomain()[1]+","+variable.getDomain()[2]+"]");
-//
-//        for(int i=0; i<ordering.size(); i++)
-//            System.out.print(ordering.get(i)+" ");
-//        System.out.println();
-//        System.out.println("-----------");
-
         return ordering;
     }
 
@@ -934,30 +800,22 @@ public class Utility {
 
         if (isComplete(vList))
             return vList;
+
         ArrayList<Variable> vPrimList = findOtherVariables(vList, variables);
         if (vPrimList.size() == 0) {
-            ///System.out.println("returned");
             return null;
         }
 
         AC3(variables, vPrimList);
-        if (hasEmptyDomain(variables))
+        if(hasEmptyDomain(variables)){
             return null;
+        }
 
         Variable var = MRV(vPrimList);
         ArrayList<Integer> ordering = LCV(variables, var);
-/*
-        System.out.println("------");
-        for (int i = 0; i < ordering.size(); i++) {
-            System.out.println(ordering.get(i) + " ");
-        }
-        System.out.println("------");
-*/
 
         for (int v : ordering) {
             int[][] pos = var.getPositions();
-//            System.out.println(v + " -->[ " + var.getDomain()[0] + "," + var.getDomain()[1] + "," + var.getDomain()[2] + "]" +
-//                    "-->" + pos[0][0] + " " + pos[0][1]);
             int[] preDomain = new int[3];
             System.arraycopy(var.domain, 0, preDomain, 0, 3);
             var.selectValue(v);
@@ -1020,19 +878,6 @@ public class Utility {
             return false; //age hame moteghayera meghdar naagerefte bashan
 
         Hashtable<String, Variable> variables = listToHash(variableArrayList);
-        String key;
-/*
-        for (int i = 0; i < rowNumber; i++) {
-            for (int j = 0; j < columnNumber; j++) {
-                key = i + " " + j;
-                var = variables.get(key);
-                value = var.selectedValue(i, j);
-                System.out.print(value + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
-*/
 
         for (int i = 0; i < rowNumber; i++) {
             for (int j = 0; j < columnNumber; j++) {

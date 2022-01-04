@@ -67,9 +67,8 @@ public class Variable {
     public void selectValue(int d) {
 
         if (domain[d] != 1) {
-            System.out.println(this.getPositions()[0][0] + " " + this.getPositions()[0][1]);
             System.out.println("error");
-            System.exit(7);
+            System.exit(3);
         }
 
         for (int i = 0; i < 3; i++) {
@@ -85,7 +84,7 @@ public class Variable {
 
         int selected = -1;
         if (this.getDomainSize() > 1)
-            return "z";
+            return "n";
         for (int i = 0; i < 3; i++) {
             if (domain[i] == 1)
                 selected = i;
