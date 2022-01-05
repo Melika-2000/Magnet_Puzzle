@@ -2,11 +2,8 @@ package com.company;
 
 public class Variable {
     private int[][] positions = new int[2][2];
-    private boolean isMagnet = false;
-    private char[] positionPoles = new char[2];
     int[] domain = {1, 1, 1};
-    int[] Pdomain = {1, 1, 1};
-    int[] Pdomain2 = {1, 1, 1};
+
     //int[] initialDomain
     //// if domain[0] == 1 means that isMagnet can be false
     //// if domain[1] == 1 means that positionPoles[0] can be + and positionPoles[1] can be -
@@ -26,10 +23,6 @@ public class Variable {
 
     public int[][] getPositions() {
         return positions;
-    }
-
-    public boolean isMagnet() {
-        return isMagnet;
     }
 
     public boolean isHorizontal() {
@@ -52,23 +45,6 @@ public class Variable {
         return size;
     }
 
-    public char[] getPositionPoles() {
-        return positionPoles;
-    }
-
-    public void setPositionPoles(char positionPole1, char positionPole2) {
-        this.positionPoles[0] = positionPole1;
-        this.positionPoles[1] = positionPole2;
-    }
-
-    public void setMagnet(boolean magnet) {
-        isMagnet = magnet;
-    }
-
-    public boolean getIsMagnet() {
-        return isMagnet;
-    }
-
     public String getOtherPosition(String position) {
         String returnedStr = "";
         try {
@@ -88,20 +64,7 @@ public class Variable {
         return returnedStr;
     }
 
-    public void setPdomainToDomain() { ///////////////////////////////////////////////
-        for (int i = 0; i < 3; i++) {
-            domain[i] = Pdomain[i];
-        }
-    }
-
     public void selectValue(int d) {
-
-        for (int i = 0; i < 3; i++) {
-            Pdomain[i] = domain[i];
-        }
-
-        if (d != 0)
-            this.setMagnet(true);
 
         if (domain[d] != 1) {
             System.out.println(this.getPositions()[0][0] + " " + this.getPositions()[0][1]);
@@ -114,21 +77,6 @@ public class Variable {
                 domain[i] = 0;
             } else
                 domain[i] = 1;
-        }
-
-    }
-
-    public void savePdomain() {
-        for (int i = 0; i < 3; i++) {
-            this.Pdomain2[i] = domain[i];
-        }
-
-    }
-
-    public void loadPdomain() {
-
-        for (int i = 0; i < 3; i++) {
-            this.domain[i] = Pdomain2[i];
         }
 
     }
@@ -181,6 +129,4 @@ public class Variable {
         x = Integer.parseInt(yxString.substring(yxString.indexOf(" ") + 1));
         return x;
     }
-
-
 }

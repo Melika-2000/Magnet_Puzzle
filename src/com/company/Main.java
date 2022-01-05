@@ -1,12 +1,13 @@
 package com.company;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.*;
 
 public class Main {
 
 
     public static void main(String args[]){
-
         Scanner scanner = new Scanner(System.in);
         int rowNumber = scanner.nextInt();
         int columnNumber = scanner.nextInt();
@@ -37,7 +38,7 @@ public class Main {
                 intTable[i][j] = scanner.nextInt();
             }
         }
-
+        long startTime = System.currentTimeMillis();
         String key;
         ArrayList<Variable> variables = new ArrayList<>();
 
@@ -63,6 +64,9 @@ public class Main {
         result = function.CSP_BackTracking(vList, variables);
         if(result == null){
             System.out.println("no answers found");
+            long endTime = System.currentTimeMillis();
+            long timeElapsed = endTime - startTime;
+            System.out.print("Execution time is " + timeElapsed + " miliseconds");
             System.exit(2);
         }
 
@@ -79,8 +83,8 @@ public class Main {
             }
             System.out.println();
         }
-
+        long endTime = System.currentTimeMillis();
+        long timeElapsed = endTime - startTime;
+        System.out.print("Execution time is " + timeElapsed + " miliseconds");
     }
-
-
 }
